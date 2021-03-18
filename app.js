@@ -1,0 +1,13 @@
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const cors = require('cors')
+app.use(cors())
+require('./db/connection')
+const router = require('./router')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use('/',router)
+app.listen(3000, () => {
+    console.log(`3000`)
+})
